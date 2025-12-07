@@ -1,7 +1,17 @@
 rootProject.name = 'SpringBoot3'
 
+// Java
 include("java-api")
 project(":java-api").projectDir = file("java/java-api")
+// Java - JPA
+include("java-jpa-core")
+project(":java-jpa-core").projectDir = file("java/db/jpa/java-jpa-core")
 
+// Java - JPA - MySql
+include("java-jpa-mysql")
+project(":java-jpa-mysql").projectDir = file("java/db/jpa/java-jpa-mysql")
+
+// Kotlin
 include("kotlin-api")
 project(":kotlin-api").projectDir = file("kotlin/kotlin-api")
+

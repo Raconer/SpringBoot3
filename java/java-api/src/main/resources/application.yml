@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Spring-Java-Api
+  config:
+    import:
+      - classpath:application-jpa.yml
+  datasource:
+    url: jdbc:mysql://localhost:3306/study?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

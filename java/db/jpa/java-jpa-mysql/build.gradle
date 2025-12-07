@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+    id 'io.spring.dependency-management'
+}
+
+group = 'com.spring.jpa'
+description = 'java-jpa-mysql'
+
+dependencies {
+    // 공통 JPA 기반 모듈 (엔티티, Repository, 공통 설정 등)
+    api project(":java-jpa-core")
+
+    // MySQL JDBC 드라이버
+    runtimeOnly "com.mysql:mysql-connector-j:${mysqlConnectorVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
