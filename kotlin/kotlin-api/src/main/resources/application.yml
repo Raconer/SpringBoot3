@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Spring-Java-Api
+    name: Spring-Kotlin-Api
   config:
     import:
       - classpath:application-jpa.yml

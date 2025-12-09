@@ -15,3 +15,10 @@ project(":java-jpa-mysql").projectDir = file("java/db/jpa/java-jpa-mysql")
 include("kotlin-api")
 project(":kotlin-api").projectDir = file("kotlin/kotlin-api")
 
+// Kotlin - JPA
+include("kotlin-jpa-core")
+project(":kotlin-jpa-core").projectDir = file("kotlin/db/jpa/kotlin-jpa-core")
+
+// Kotlin - JPA - Mysql
+include("kotlin-jpa-mysql")
+project(":kotlin-jpa-mysql").projectDir = file("kotlin/db/jpa/kotlin-jpa-mysql")

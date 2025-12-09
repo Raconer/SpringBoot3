@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 val springBootVersion: String by rootProject.extra
 
 plugins {
@@ -13,8 +11,14 @@ group = "com.spring"
 description = "kotlin-api"
 
 dependencies {
+    // DB 접근(엔티티 + JPA Repository + MySQL 구현체)
+    implementation(project(":kotlin-jpa-mysql"))
+
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // SWAGGER
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
