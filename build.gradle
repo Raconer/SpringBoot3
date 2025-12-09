@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '3.5.8' apply false
+    id 'io.spring.dependency-management' version '1.1.7' apply false
+}
+ext {
+    // 공통 버전 모음
+    springBootVersion = '3.5.8'
+    mysqlConnectorVersion = '9.1.0'
+}
+
+allprojects {
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+subprojects {
+    // 모든 모듈 공통 Java 설정
+    apply plugin: 'java'
+    sourceCompatibility=21
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    dependencies {}
+}

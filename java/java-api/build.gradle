@@ -1,28 +1,27 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.5.8'
-	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.springframework.boot'
+	id 'io.spring.dependency-management'
 }
 
 group = 'com.spring'
-version = '0.0.1-SNAPSHOT'
 description = 'java-api'
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
-
-repositories {
-	mavenCentral()
-}
-
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// DB 접근(엔티티 + JPA Repository + MySQL 구현체)
+	implementation project(":java-jpa-mysql")
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Spring MVC, JSON 처리 등 웹 API 기본 기능
+	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+
+	compileOnly "org.projectlombok:lombok:1.18.34"
+	annotationProcessor "org.projectlombok:lombok:1.18.34"
+
+	// SWAGGER
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9"
+
+	// Spring Test
+	testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }
 
 tasks.named('test') {
