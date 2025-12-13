@@ -1,5 +1,10 @@
 rootProject.name = 'SpringBoot3'
 
+// Common
+// Document
+include("swagger")
+project(":swagger").projectDir = file("common/doc/swagger")
+
 // Java
 include("java-api")
 project(":java-api").projectDir = file("java/java-api")
