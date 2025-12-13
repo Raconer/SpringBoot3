@@ -12,10 +12,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 # SWAGGER
-springdoc:
-  swagger-ui:
-    path: /swagger/index.html
-    supported-submit-methods: [get, post, put, delete]
-    tags-sorter: alpha
-    operations-sorter: method
-    groups-order: ASC
+custom:
+  swagger:
+    title: "Spring Boot 3 API 문서"
+    description: "Kotlin API 문서 입니다."
+    version: "1.0.0"
