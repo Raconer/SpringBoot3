@@ -1,6 +1,6 @@
-package com.spring.mysql.domain
+package com.spring.jpa.mysql.domain
 
-import com.spring.core.domain.entity.BaseEntity
+import com.spring.jpa.core.domain.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity

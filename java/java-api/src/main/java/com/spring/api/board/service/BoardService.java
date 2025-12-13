@@ -1,6 +1,6 @@
 package com.spring.api.board.service;
 
-import com.spring.mysql.domain.Board;
+import com.spring.jpa.mysql.domain.Board;
 
 import java.util.List;
 

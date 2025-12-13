@@ -1,4 +1,4 @@
-package com.spring.core.domain.entity
+package com.spring.jpa.core.domain.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners

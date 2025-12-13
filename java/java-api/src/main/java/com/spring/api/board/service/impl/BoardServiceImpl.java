@@ -1,8 +1,8 @@
 package com.spring.api.board.service.impl;
 
 import com.spring.api.board.service.BoardService;
-import com.spring.mysql.domain.Board;
-import com.spring.mysql.repository.BoardRepository;
+import com.spring.jpa.mysql.domain.Board;
+import com.spring.jpa.mysql.repository.BoardRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
