@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    show-sql: false # Hibernate SQL 출력
+    properties:
+      hibernate:
+        format_sql: true # SQL 줄바꿈/포맷
+        use_sql_comments: true # Hibernate SQL 주석 출력
+
+logging:
+  level:
+    org.hibernate.SQL: debug # 실행되는 SQL 로그
+    org.hibernate.orm.jdbc.bind: trace # SQL 바인딩 파라미터 로그(?, 실제 값)
