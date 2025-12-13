@@ -13,6 +13,7 @@ description = "kotlin-api"
 dependencies {
     // DB 접근(엔티티 + JPA Repository + MySQL 구현체)
     implementation(project(":kotlin-jpa-mysql"))
+    implementation(project(":swagger"))
 
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")

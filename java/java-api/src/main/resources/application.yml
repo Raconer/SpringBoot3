@@ -4,17 +4,10 @@ spring:
   config:
     import:
       - classpath:application-jpa.yml
+      - classpath:application-swagger.yml
   datasource:
     url: jdbc:mysql://localhost:3306/study?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-# SWAGGER
-springdoc:
-  swagger-ui:
-    path: /swagger/index.html
-    supported-submit-methods: [get, post, put, delete]
-    tags-sorter: alpha
-    operations-sorter: method
-    groups-order: ASC
