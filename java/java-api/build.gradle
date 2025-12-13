@@ -9,6 +9,7 @@ description = 'java-api'
 dependencies {
 	// DB 접근(엔티티 + JPA Repository + MySQL 구현체)
 	implementation project(":java-jpa-mysql")
+	implementation project(":java-redis-cache")
 	implementation project(":swagger")
 
 

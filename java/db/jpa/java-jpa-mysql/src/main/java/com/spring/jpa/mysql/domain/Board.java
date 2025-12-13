@@ -2,14 +2,17 @@ package com.spring.jpa.mysql.domain;
 
 import com.spring.jpa.core.domain.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Getter
-@NoArgsConstructor
+import java.io.Serializable;
+
 @Entity
 @Table(name = "board", catalog = "study")
-public class Board extends BaseEntity {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE) // 👈 Builder와 함께 사용하기 위해 추가 (private 접근)
+@Getter
+public class Board extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,4 +28,9 @@ public class Board extends BaseEntity {
 
     @Column(nullable = false)
     private int viewCount = 0;
+
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
 }
