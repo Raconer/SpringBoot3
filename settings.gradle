@@ -16,6 +16,14 @@ project(":java-jpa-core").projectDir = file("java/db/jpa/java-jpa-core")
 include("java-jpa-mysql")
 project(":java-jpa-mysql").projectDir = file("java/db/jpa/java-jpa-mysql")
 
+// Java - Redis
+include("java-redis-core")
+project(":java-redis-core").projectDir = file("java/redis/java-redis-core")
+
+// Java - Redis - Cache
+include("java-redis-cache")
+project(":java-redis-cache").projectDir = file("java/redis/java-redis-cache")
+
 // Kotlin
 include("kotlin-api")
 project(":kotlin-api").projectDir = file("kotlin/kotlin-api")
@@ -27,3 +35,11 @@ project(":kotlin-jpa-core").projectDir = file("kotlin/db/jpa/kotlin-jpa-core")
 // Kotlin - JPA - Mysql
 include("kotlin-jpa-mysql")
 project(":kotlin-jpa-mysql").projectDir = file("kotlin/db/jpa/kotlin-jpa-mysql")
+
+// Kotlin - Redis
+include("kotlin-redis-core")
+project(":kotlin-redis-core").projectDir = file("kotlin/redis/kotlin-redis-core")
+
+// Kotlin - Redis - Cache
+include("kotlin-redis-cache")
+project(":kotlin-redis-cache").projectDir = file("kotlin/redis/kotlin-redis-cache")

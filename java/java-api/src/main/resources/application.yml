@@ -5,12 +5,28 @@ spring:
     import:
       - classpath:application-jpa.yml
       - classpath:application-swagger.yml
+# MySql 연결
   datasource:
     url: jdbc:mysql://localhost:3306/study?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+# Redis 연결
+  data:
+    redis:
+      # 호스트: 도커 컨테이너를 로컬에서 띄웠다면 localhost (또는 컨테이너 이름)
+      host: localhost
+      # 포트: Redis 기본 포트
+      port: 6379
+  cache:
+    type: redis
+    redis:
+      # 캐시 기본 TTL (Time To Live, 유지 시간)을 밀리초(ms) 단위로 지정 (예: 60초)
+      time-to-live: 60000
+      # 캐시 키(Key) 앞에 붙일 접두사. Redis에서 캐시 키 관리에 용이합니다.
+      key-prefix: "app:cache:"
+      # 캐시 미스 시 데이터베이스를 룩업할 때 null 값을 캐시할지 여부 (기본값 true)
+      cache-null-values: true
 # SWAGGER
 custom:
   swagger:
