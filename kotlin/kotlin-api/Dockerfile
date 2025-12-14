@@ -13,7 +13,7 @@ COPY . .
 # [핵심 변경 2]
 # 프로젝트 전체가 들어왔으니, Gradle이 의존성(jpa 모듈)을 찾을 수 있습니다.
 # 전체 빌드를 수행합니다. (특정 모듈만 빌드하려면 :kotlin:kotlin-api:build 처럼 경로 지정 가능)
-RUN gradle clean build -x test --no-daemon
+RUN gradle clean :kotlin-api:bootJar -x test --no-daemon
 
 # ========================================================
 # 2단계: 실행 환경 (Run Stage)

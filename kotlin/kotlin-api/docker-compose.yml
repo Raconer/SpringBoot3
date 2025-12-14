@@ -15,26 +15,52 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./db_data:/var/lib/mysql
+      - mysql-volume:/var/lib/mysql
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
 
   # -----------------------------------
-  # 2. Spring Boot Service
+  # 2. Redis Service (추가됨)
+  # -----------------------------------
+  redis:
+    image: redis:latest
+    container_name: redis-kotlin-container
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-volume:/data  # 생성해둔 redis-volume 연결
+    command: redis-server --appendonly yes
+
+  # -----------------------------------
+  # 3. Spring Boot Service
   # -----------------------------------
   kotlin-api:
     container_name: kotlin-api-container
     build:
-      context: ../../              # [핵심 변경] 프로젝트 최상위 루트로 변경
-      dockerfile: kotlin/kotlin-api/Dockerfile # [핵심 변경] Dockerfile 위치 지정
+      context: ../../
+      dockerfile: kotlin/kotlin-api/Dockerfile
     ports:
       - "8080:8080"
     depends_on:
       - mysql
+      - redis # Redis가 먼저 켜져야 하므로 의존성 추가
     environment:
+      # [요청사항 반영] Active Profile을 'docker'로 설정
+      SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/study?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Redis 접속 정보도 docker 프로필이나 여기에 명시가 필요할 수 있습니다.
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
     restart: on-failure
+
+# -----------------------------------
+# Volumes Definition
+# -----------------------------------
+volumes:
+  mysql-volume:
+  redis-volume:
