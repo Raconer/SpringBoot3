@@ -24,7 +24,7 @@ public class Board extends BaseEntity implements Serializable {
     private String content;
 
     @Column(nullable = false)
-    private String writer;   // 작성자 이름 또는 작성자 ID
+    private String writer;
 
     @Column(nullable = false)
     private int viewCount = 0;

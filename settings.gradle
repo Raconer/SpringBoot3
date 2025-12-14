@@ -35,3 +35,11 @@ project(":kotlin-jpa-core").projectDir = file("kotlin/db/jpa/kotlin-jpa-core")
 // Kotlin - JPA - Mysql
 include("kotlin-jpa-mysql")
 project(":kotlin-jpa-mysql").projectDir = file("kotlin/db/jpa/kotlin-jpa-mysql")
+
+// Kotlin - Redis
+include("kotlin-redis-core")
+project(":kotlin-redis-core").projectDir = file("kotlin/redis/kotlin-redis-core")
+
+// Kotlin - Redis - Cache
+include("kotlin-redis-cache")
+project(":kotlin-redis-cache").projectDir = file("kotlin/redis/kotlin-redis-cache")

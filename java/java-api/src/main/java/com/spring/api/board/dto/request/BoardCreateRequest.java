@@ -12,16 +12,14 @@ public record BoardCreateRequest(
                 description = "게시글의 제목",
                 example = "안녕하세요. 첫 게시글입니다.", // 👈 예시 값 추가
                 minLength = 1,
-                maxLength = 200,
-                requiredMode = Schema.RequiredMode.REQUIRED // 👈 필수가 명확히 표시됨
+                maxLength = 200
         )
         String title,
 
         @NotBlank(message = "내용은 필수 입력 항목입니다.")
         @Schema(
                 description = "게시글의 본문 내용",
-                example = "레코드 클래스를 사용한 DTO 설계는 매우 간결합니다.", // 👈 예시 값 추가
-                requiredMode = Schema.RequiredMode.REQUIRED
+                example = "레코드 클래스를 사용한 DTO 설계는 매우 간결합니다." // 👈 예시 값 추가
         )
         String content,
 
@@ -31,8 +29,7 @@ public record BoardCreateRequest(
                 description = "작성자 이름 또는 ID",
                 example = "dev_user_123", // 👈 예시 값 추가
                 minLength = 1,
-                maxLength = 50,
-                requiredMode = Schema.RequiredMode.REQUIRED
+                maxLength = 50
         )
         String writer
 ){}

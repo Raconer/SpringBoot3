@@ -54,8 +54,8 @@ public class BoardCacheServiceImpl implements BoardService {
     @CacheEvict(value = "board-list", allEntries = true)
     @Override
     public Board update(BoardUpdateRequest request) {
-        Board board = this.boardRepository.findById(request.id())
-                        .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."+ request.id()));
+             Board board = this.boardRepository.findById(request.id())
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."+ request.id()));
 
         board.update(request.title(), request.content());
 
