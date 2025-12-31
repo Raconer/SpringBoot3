@@ -47,12 +47,12 @@ public class OauthInstagramService {
     // 1단계: Instagram 로그인 페이지 URL 생성
     // ================================================
     public String getAuthorizationUrl() {
-        return "https://api.instagram.com/oauth/authorize"
-                + "?client_id=" + clientId                    // 우리 앱 식별자
-                + "&redirect_uri=" + URLEncoder.encode(redirectUri, StandardCharsets.UTF_8)  // 로그인 후 돌아올 URL (URL 인코딩 필수)
-                + "&scope=user_profile"                       // 요청할 권한 (프로필 정보만)
-                + "&response_type=code"
-                + "&state=어떤값";                      // 응답 타입: authorization code
+        return "https://www.instagram.com/oauth/authorize" +
+                "?force_reauth=true" +
+                "&client_id=" + clientId +
+                "&redirect_uri=" + redirectUri +
+                "&response_type=code" +
+                "&scope=instagram_business_basic";
     }
 
     // ================================================

@@ -28,7 +28,6 @@ public class OauthInstagramController {
     @GetMapping()
     public ResponseEntity<Void> login() {
         String authUrl = oauthInstagramService.getAuthorizationUrl();
-
         return ResponseEntity.status(HttpStatus.FOUND)
                 .location(URI.create(authUrl))
                 .build();
@@ -38,7 +37,7 @@ public class OauthInstagramController {
      * 콜백 → 인증 완료 → 사용자 정보 반환
      */
     @GetMapping("/callback")
-    public ResponseEntity<InstagramUser> callback(@RequestParam String code) {
+    public ResponseEntity<InstagramUser> callback(@RequestParam(name = "code") String code) {
         InstagramUser user = oauthInstagramService.authenticate(code);
         log.info("Instagram 인증 성공: {}", user.getUsername());
         return ResponseEntity.ok(user);
