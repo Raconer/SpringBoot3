@@ -24,6 +24,10 @@ project(":java-redis-core").projectDir = file("java/redis/java-redis-core")
 include("java-redis-cache")
 project(":java-redis-cache").projectDir = file("java/redis/java-redis-cache")
 
+// Java - OAuth - Social
+include("java-oauth-social")
+project(":java-oauth-social").projectDir = file("java/oauth/java-oauth-social")
+
 // Java - Mail
 include("java-mail-sender")
 project(":java-mail-sender").projectDir = file("java/email/java-mail-sender")

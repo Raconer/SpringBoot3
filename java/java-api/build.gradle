@@ -9,8 +9,12 @@ description = 'java-api'
 dependencies {
 	// DB 접근(엔티티 + JPA Repository + MySQL 구현체)
 	implementation project(":java-jpa-mysql")
+    // Cache DB
 	implementation project(":java-redis-cache")
     implementation project(":java-mail-sender")
+    // OAuth
+    implementation project(":java-oauth-social")
+    // Swagger
 	implementation project(":swagger")
 
 	// Spring MVC, JSON 처리 등 웹 API 기본 기능
@@ -18,9 +22,6 @@ dependencies {
 
 	compileOnly "org.projectlombok:lombok:1.18.34"
 	annotationProcessor "org.projectlombok:lombok:1.18.34"
-
-	// SWAGGER
-//	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9"
 
 	// Spring Test
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
