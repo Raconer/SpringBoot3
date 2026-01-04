@@ -8,3 +8,9 @@ google:
   client-id: ${GOOGLE_CLIENT_ID}
   client-secret: ${GOOGLE_CLIENT_SECRET}
   redirect-uri: ${GOOGLE_REDIRECT_URL}
+
+tiktok:
+  verify: ${TIKTOK_OAUTH_VERIFY}
+  client-id: ${TIKTOK_CLIENT_ID}
+  client-secret: ${TIKTOK_CLIENT_SECRET}
+  redirect-uri: ${TIKTOK_REDIRECT_URL}
