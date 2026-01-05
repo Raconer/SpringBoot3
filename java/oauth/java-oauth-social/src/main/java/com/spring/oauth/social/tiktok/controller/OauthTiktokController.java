@@ -2,6 +2,7 @@ package com.spring.oauth.social.tiktok.controller;
 
 import com.spring.oauth.social.instagram.dto.InstagramUser;
 import com.spring.oauth.social.instagram.service.OauthInstagramService;
+import com.spring.oauth.social.tiktok.dto.TiktokUser;
 import com.spring.oauth.social.tiktok.service.OauthTiktokService;
 import lombok.AllArgsConstructor;
 
@@ -50,9 +51,9 @@ public class OauthTiktokController {
      * 콜백 → 인증 완료 → 사용자 정보 반환
      */
     @GetMapping("/callback")
-    public ResponseEntity<InstagramUser> callback(@RequestParam(name = "code") String code) {
-        InstagramUser user = oauthTiktokService.authenticate(code);
-        log.info("Instagram 인증 성공: {}", user.getUsername());
+    public ResponseEntity<TiktokUser> callback(@RequestParam(name = "code") String code) {
+        TiktokUser user = oauthTiktokService.authenticate(code);
+        log.info("Instagram 인증 성공: {}", user.getName());
         return ResponseEntity.ok(user);
     }
 

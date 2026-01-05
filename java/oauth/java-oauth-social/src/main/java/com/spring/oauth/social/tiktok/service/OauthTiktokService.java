@@ -1,5 +1,7 @@
 package com.spring.oauth.social.tiktok.service;
 
+import com.spring.oauth.social.tiktok.dto.TiktokUser;
+import com.spring.oauth.social.tiktok.dto.response.TiktokTokenResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Value;
@@ -55,12 +57,12 @@ public class OauthTiktokService {
     // ================================================
     // 2단계: 전체 인증 프로세스 실행
     // ================================================
-    public Map<String, Object> authenticate(String code) {
+    public TiktokUser authenticate(String code) {
         // 1. code를 access_token으로 교환
-        Map<String, Object> tokenResponse = exchangeToken(code);
+        TiktokTokenResponse tokenResponse = exchangeToken(code);
 
         // 응답 데이터에서 access_token 추출 (틱톡 응답 구조에 맞춤)
-        String accessToken = (String) tokenResponse.get("access_token");
+        String accessToken = tokenResponse.getAccessToken();
 
         // 2. access_token으로 사용자 정보 조회 후 반환
         return getUserInfo(accessToken);
@@ -69,7 +71,7 @@ public class OauthTiktokService {
     // ================================================
     // 3단계: Authorization Code → Access Token 교환
     // ================================================
-    private Map<String, Object> exchangeToken(String code) {
+    private TiktokTokenResponse exchangeToken(String code) {
         // TikTok API에 보낼 파라미터 구성
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("client_key", clientId);            // 클라이언트 키
@@ -83,10 +85,10 @@ public class OauthTiktokService {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED); // form 데이터 형식
 
         // TikTok 토큰 엔드포인트로 POST 요청
-        ResponseEntity<Map> response = restTemplate.postForEntity(
+        ResponseEntity<TiktokTokenResponse> response = restTemplate.postForEntity(
                 "https://open.tiktokapis.com/v2/oauth/token/", // TikTok 토큰 발급 URL
                 new HttpEntity<>(params, headers),              // 요청 바디 + 헤더
-                Map.class                                       // 응답을 Map으로 변환
+                TiktokTokenResponse.class                                       // 응답을 Map으로 변환
         );
 
         return response.getBody();
@@ -95,7 +97,7 @@ public class OauthTiktokService {
     // ================================================
     // 4단계: Access Token으로 사용자 정보 조회
     // ================================================
-    private Map<String, Object> getUserInfo(String accessToken) {
+    private TiktokUser getUserInfo(String accessToken) {
         // HTTP 헤더 설정 (Bearer 토큰 방식)
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(accessToken); // Authorization: Bearer {access_token}
@@ -106,11 +108,11 @@ public class OauthTiktokService {
         String url = "https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url,display_name";
 
         // GET 요청 수행
-        ResponseEntity<Map> response = restTemplate.exchange(
+        ResponseEntity<TiktokUser> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 entity,
-                Map.class
+                TiktokUser.class
         );
 
         return response.getBody();
