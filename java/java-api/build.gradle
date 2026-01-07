@@ -10,8 +10,8 @@ dependencies {
 	// DB 접근(엔티티 + JPA Repository + MySQL 구현체)
 	implementation project(":java-jpa-mysql")
 	implementation project(":java-redis-cache")
+    implementation project(":java-mail-sender")
 	implementation project(":swagger")
-
 
 	// Spring MVC, JSON 처리 등 웹 API 기본 기능
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
